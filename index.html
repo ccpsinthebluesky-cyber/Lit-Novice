@@ -1,210 +1,289 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中文 AI 隱形便利貼插入器｜《三生碑緣》張明泰（長流）原創防呆工具</title>
-    <style>
-        :root {
-            --bg: #f4f6f9;
-            --card: #ffffff;
-            --primary: #1e3a8a;
-            --primary-hover: #172554;
-            --success: #15803d;
-            --text: #1e293b;
-            --border: #cbd5e1;
-        }
-        * { box-sizing: border-box; font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
-        body { background-color: var(--bg); color: var(--text); margin: 0; padding: 20px; line-height: 1.6; }
-        .container { max-width: 920px; margin: 0 auto; background: var(--card); padding: 32px; border-radius: 14px; box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
-        .header-bar { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px; border-bottom: 1px solid var(--border); padding-bottom: 18px; margin-bottom: 18px; }
-        .title-group h1 { margin: 0; font-size: 24px; color: var(--primary); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-        .author-badge { font-size: 13px; background: #fef3c7; color: #92400e; padding: 4px 12px; border-radius: 6px; font-weight: 600; border: 1px solid #fde68a; }
-        .trust-note { font-size: 14px; color: #475569; margin-top: 8px; line-height: 1.6; }
-        .btn-download { background-color: #ffffff; color: var(--primary); border: 1.5px solid var(--primary); padding: 9px 15px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
-        .btn-download:hover { background-color: var(--primary); color: #ffffff; }
-        .options { display: flex; gap: 18px; align-items: center; font-size: 14px; background: #f8fafc; padding: 12px 16px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 15px; flex-wrap: wrap; }
-        .options label { cursor: pointer; display: flex; align-items: center; gap: 6px; user-select: none; }
-        textarea { width: 100%; height: 260px; padding: 16px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 16px; line-height: 1.8; resize: vertical; outline: none; transition: border 0.2s; }
-        textarea:focus { border-color: var(--primary); }
-        .controls { display: flex; gap: 10px; flex-wrap: wrap; margin: 16px 0; align-items: center; }
-        button.action-btn { padding: 11px 20px; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px; }
-        .btn-inject { background-color: var(--primary); color: white; }
-        .btn-inject:hover { background-color: var(--primary-hover); }
-        .btn-clean { background-color: #f1f5f9; color: #334155; border: 1px solid var(--border); }
-        .btn-clean:hover { background-color: #e2e8f0; }
-        .btn-copy { background-color: var(--success); color: white; margin-left: auto; }
-        .btn-copy:hover { opacity: 0.92; }
-        .stats { display: flex; gap: 24px; font-size: 14px; color: #475569; background: #f1f5f9; padding: 12px 16px; border-radius: 8px; flex-wrap: wrap; }
-        .stats span b { color: var(--primary); font-size: 16px; }
-        .xray-box { display: none; margin-top: 15px; padding: 15px; background: #fffbeb; border: 1px dashed #f59e0b; border-radius: 8px; font-size: 15px; white-space: pre-wrap; word-break: break-all; max-height: 220px; overflow-y: auto; }
-        .xray-dot { color: #dc2626; font-weight: bold; padding: 0 1px; }
-        .toast { position: fixed; bottom: 25px; right: 25px; background: #0f172a; color: #fff; padding: 12px 22px; border-radius: 8px; font-size: 14px; opacity: 0; transition: opacity 0.3s; pointer-events: none; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-        .footer { margin-top: 28px; font-size: 13px; color: #475569; text-align: center; border-top: 1px solid #e2e8f0; padding-top: 18px; line-height: 1.7; }
-        .footer b { color: var(--primary); }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文學小白便利貼（Lit-Novice）— 中文文本解析度強波器</title>
+<style>
+  :root {
+    --navy: #1B365D;
+    --teal: #0E7490;
+    --brick: #9A3412;
+    --bg: #F8FAFC;
+    --card: #FFFFFF;
+    --border: #CBD5E1;
+    --text: #1E293B;
+    --muted: #64748B;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 24px 16px 48px;
+    font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  header {
+    border-left: 5px solid var(--navy);
+    padding-left: 16px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    margin: 0 0 6px;
+    font-size: 1.6rem;
+    color: var(--navy);
+  }
+  .subtitle {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+  .callout {
+    background: #F0F9FF;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--teal);
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  label {
+    display: block;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    line-height: 1.7;
+  }
+  textarea:focus {
+    outline: 2px solid var(--teal);
+    border-color: var(--teal);
+  }
+  .btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  button {
+    padding: 9px 16px;
+    border-radius: 7px;
+    border: 1px solid transparent;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: opacity 0.15s;
+  }
+  button:hover { opacity: 0.88; }
+  .btn-primary { background: var(--navy); color: #fff; }
+  .btn-teal { background: var(--teal); color: #fff; }
+  .btn-outline { background: #fff; color: var(--navy); border-color: var(--border); }
+  .btn-sample { background: #F1F5F9; color: var(--text); border-color: var(--border); font-size: 0.86rem; padding: 6px 12px; }
+  .status {
+    margin-top: 10px;
+    font-size: 0.88rem;
+    color: var(--teal);
+    min-height: 1.4em;
+  }
+  .preview-box {
+    background: #F8FAFC;
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    min-height: 80px;
+    white-space: pre-wrap;
+    word-break: break-all;
+    font-size: 0.98rem;
+    line-height: 1.8;
+  }
+  .sep-mark { color: var(--teal); font-weight: 700; }
+  .con-mark { color: var(--brick); font-weight: 700; }
+  footer {
+    margin-top: 28px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-align: center;
+  }
+  footer a { color: var(--teal); text-decoration: none; }
+</style>
 </head>
 <body>
-
 <div class="container">
-    <div class="header-bar">
-        <div class="title-group">
-            <h1>
-                🛡️ 中文 AI 隱形便利貼插入器
-                <span class="author-badge">《三生碑緣》專案｜張明泰（長流）原創發明</span>
-            </h1>
-            <div class="trust-note">
-                為中文字與標點壓上一層肉眼看不見的<b>「透明盲人點字（防疫隔板／認知減速帶）」</b>，徹底阻斷 AI 的 BPE 黏字機制。<br>
-                <b>人類眼睛看：維持 100% 原本漂亮排版</b> ｜ <b>AI 觸覺摸：一字一字分開讀，不漏字、不亂拆、把標點變回警告路牌！</b><br>
-                🔒 <b>安全承諾：</b>本工具只在您的電腦或手機內運作，<b>文章絕不會傳到網路上</b>。可直接線上使用，或點擊右側按鈕下載保存。
-            </div>
-        </div>
-        <button class="btn-download" onclick="downloadSelf()" title="將此工具完整下載到您的電腦，沒網路也能永久免費使用">
-            📥 下載單機離線版
-        </button>
+  <header>
+    <h1>AI協助工具：文學小白便利貼（Lit-Novice）</h1>
+    <p class="subtitle">作者：張明泰（筆名：長流）｜中文前端字元邊界調控與標點避頭尾工具</p>
+  </header>
+
+  <div class="callout">
+    <strong>核心定位：</strong>這是一個中文文本解析度的強波器，能將模型對中文的判讀解析度由 480P 輕鬆提升至 1080P，順帶解決麻煩的排版問題；但唯有正確的價值觀與提示詞，才能真正躍升為 4K 高畫質。
+  </div>
+
+  <div class="card">
+    <label for="inputText">1. 貼上中文原文（完全在您的瀏覽器本機運算，不上傳任何資料）</label>
+    <div class="btn-row" style="margin-top:0; margin-bottom:10px;">
+      <button class="btn-sample" onclick="loadSample('poem')">載入《還陽》測試句</button>
+      <button class="btn-sample" onclick="loadSample('law')">載入法律契約測試句</button>
+      <button class="btn-sample" onclick="clearAll()">清空</button>
     </div>
-
-    <div class="options">
-        <label>
-            <input type="radio" name="mode" value="cjk" checked>
-            <b>智慧模式（推薦）：</b>只在中文字與標點旁壓上透明點字（自動保護表格框線與英文字）
-        </label>
-        <label>
-            <input type="radio" name="mode" value="all">
-            <b>全部隔開模式：</b>所有文字、數字與符號全部逐一隔開
-        </label>
-        <label style="margin-left:auto; color:#b45309; font-weight:bold;">
-            <input type="checkbox" id="xrayToggle" onchange="updateXray()">
-            🔍 開啟「X 光透視鏡」看看透明點字（隔板）裝在哪裡
-        </label>
+    <textarea id="inputText" placeholder="請在此貼上需要給 AI 精準解析或排版的中文內容……"></textarea>
+    <div class="btn-row">
+      <button class="btn-primary" onclick="runEnhance()">一鍵增強（植入隱形空白）</button>
+      <button class="btn-outline" onclick="runRestore()">一鍵還原（清除隱形空白）</button>
     </div>
+  </div>
 
-    <textarea id="textInput" placeholder="請把您在 Word 寫好的文章、詩詞、碑文、對聯或表格複製貼到這裡..." oninput="updateStats()"></textarea>
-
-    <div class="controls">
-        <button class="action-btn btn-inject" onclick="injectZWSP()">✨ 一鍵貼上隱形便利貼（壓上透明點字）</button>
-        <button class="action-btn btn-clean" onclick="cleanZWSP()">🧹 一鍵撕下還原（恢復原本文字）</button>
-        <button class="action-btn btn-copy" onclick="copyText()">📋 複製結果給 AI</button>
+  <div class="card">
+    <label for="outputText">2. 轉換結果（外觀 100% 無痕，直接複製貼入 AI 對話框即可）</label>
+    <textarea id="outputText" readonly placeholder="轉換後的結果將顯示於此……"></textarea>
+    <div class="btn-row">
+      <button class="btn-teal" onclick="copyOutput()">一鍵複製結果</button>
     </div>
+    <div id="statusMsg" class="status"></div>
+  </div>
 
-    <div class="stats">
-        <span>📝 實際字數（不含透明點字）：<b id="charCount">0</b> 字</span>
-        <span>🛡️ 已壓上透明點字（隱形便利貼）：<b id="zwspCount">0</b> 顆</span>
-        <span>📊 目前狀態：<b id="statusText" style="color:#64748b;">一般文字（尚未防護）</b></span>
-    </div>
+  <div class="card">
+    <label>3. 隱形結構透視預覽（<span class="sep-mark">│</span>＝U+200B 分隔符 ／ <span class="con-mark">+</span>＝U+2060 連接符）</label>
+    <div id="previewBox" class="preview-box">尚未轉換</div>
+  </div>
 
-    <div id="xrayView" class="xray-box"></div>
-
-    <div class="footer">
-        <b>【原創方法論與工具聲明】</b><br>
-        專案名稱：<b>《三生碑緣》（白畫映照標準作業規範）</b> ｜ 原創發表人：<b>張明泰（筆名：長流）</b><br>
-        本工具免費開放予所有人自由使用與分享；轉載、引用或二次發布時，請給予尊重並註明出處來自<b>「《三生碑緣》張明泰（筆名：長流）」</b>。
-    </div>
+  <footer>
+    原創作者：張明泰@長流（《創作文學與我》專案）｜程式碼採 MIT License 開源釋出<br>
+    <a href="https://github.com/ccpsinthebluesky-cyber/Lit-Novice" target="_blank">前往 GitHub 專案頁查看完整白皮書與原始碼</a>
+  </footer>
 </div>
 
-<div id="toast" class="toast">已複製到剪貼簿！</div>
-
 <script>
-    const ZWSP = '\u200B';
-    const textarea = document.getElementById('textInput');
+const SEP = '\u200B';
+const CON = '\u2060';
+const CJK_RE = /[\u3007\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF\u{20000}-\u{2FA1F}\u{30000}-\u{323AF}]/u;
+const WS_RE = /\s/u;
 
-    function stripZWSP(str) {
-        return str.replace(/\u200B/g, '');
+const CJK_OPENING = new Set([
+  ...'「『\u201C\u2018（《〈【〖〔［｛',
+  ...'﹁﹃︵︽︿︻︗︹﹇︷'
+]);
+const CJK_CLOSING = new Set([
+  ...'」』\u201D\u2019）》〉】〗〕］｝',
+  ...'﹂﹄︶︾﹀︼︘︺﹈︸'
+]);
+const CJK_ATTACHED = new Set([
+  ...'。，、；：？！—…～·・／',
+  ...'︒︐︑︔︓︖︕︱︙'
+]);
+const CJK_SYMBOLS = new Set([...CJK_OPENING, ...CJK_CLOSING, ...CJK_ATTACHED]);
+
+function isCjkChar(ch) { return CJK_RE.test(ch); }
+function isCjkOpening(ch) { return CJK_OPENING.has(ch); }
+function isCjkSymbol(ch) { return CJK_SYMBOLS.has(ch); }
+
+function removeLitNovice(text) {
+  return text.replace(/[\u200B\u2060]/g, '');
+}
+
+function applyLitNovice(text) {
+  const chars = Array.from(removeLitNovice(text));
+  const out = [];
+  for (let i = 0; i < chars.length; i++) {
+    const curr = chars[i];
+    out.push(curr);
+    if (i + 1 >= chars.length) break;
+    const nxt = chars[i + 1];
+    if (WS_RE.test(curr) || WS_RE.test(nxt)) continue;
+    const cValid = isCjkChar(curr) || isCjkSymbol(curr);
+    const nValid = isCjkChar(nxt) || isCjkSymbol(nxt);
+    if (!cValid && !nValid) continue;
+    if (isCjkOpening(curr)) {
+      out.push(CON);
+    } else if (isCjkOpening(nxt)) {
+      out.push(SEP);
+    } else {
+      out.push(isCjkSymbol(nxt) ? CON : SEP);
     }
+  }
+  return out.join('');
+}
 
-    function injectZWSP() {
-        let raw = stripZWSP(textarea.value);
-        if (!raw) return showToast('請先在輸入框貼上文字！');
+function escapeHtml(str) {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
 
-        const mode = document.querySelector('input[name="mode"]:checked').value;
-        let result = '';
+function renderPreview(text) {
+  const box = document.getElementById('previewBox');
+  if (!text) { box.textContent = '尚未轉換'; return; }
+  const html = escapeHtml(text)
+    .replace(/\u200B/g, '<span class="sep-mark">│</span>')
+    .replace(/\u2060/g, '<span class="con-mark">+</span>');
+  box.innerHTML = html;
+}
 
-        if (mode === 'all') {
-            const lines = raw.split('\n');
-            result = lines.map(line => Array.from(line).join(ZWSP)).join('\n');
-        } else {
-            const cjkRegex = /([\u4e00-\u9fa5\u3000-\u303f\uff00-\uffef])(?=[^\n\r\t|])/g;
-            result = raw.replace(cjkRegex, '$1' + ZWSP);
-        }
+function runEnhance() {
+  const raw = document.getElementById('inputText').value;
+  const res = applyLitNovice(raw);
+  document.getElementById('outputText').value = res;
+  renderPreview(res);
+  const sepCount = (res.match(/\u200B/g) || []).length;
+  const conCount = (res.match(/\u2060/g) || []).length;
+  document.getElementById('statusMsg').textContent =
+    `已完成增強：植入 ${sepCount} 顆分隔符（U+200B）與 ${conCount} 顆連接符（U+2060）。`;
+}
 
-        textarea.value = result;
-        updateStats();
-        showToast('✨ 已成功壓上透明點字（隱形便利貼）！');
-    }
+function runRestore() {
+  const raw = document.getElementById('inputText').value;
+  const res = removeLitNovice(raw);
+  document.getElementById('outputText').value = res;
+  renderPreview(res);
+  document.getElementById('statusMsg').textContent = '已完成還原：所有隱形空白皆已清除。';
+}
 
-    function cleanZWSP() {
-        textarea.value = stripZWSP(textarea.value);
-        updateStats();
-        showToast('🧹 已清除所有透明點字，還原為原本文字！');
-    }
+function copyOutput() {
+  const out = document.getElementById('outputText');
+  if (!out.value) return;
+  navigator.clipboard.writeText(out.value).then(() => {
+    document.getElementById('statusMsg').textContent = '已複製到剪貼簿！可直接貼入 AI 對話框實測。';
+  });
+}
 
-    function updateStats() {
-        const val = textarea.value;
-        const matches = val.match(/\u200B/g);
-        const zwspNum = matches ? matches.length : 0;
-        const cleanText = stripZWSP(val).replace(/\s/g, '');
+function loadSample(type) {
+  const el = document.getElementById('inputText');
+  if (type === 'poem') {
+    el.value = '神風橫掃天雷現';
+  } else {
+    el.value = '　　非經書面表示「書面同意」與「書面合意」之判準，應以但書為據。';
+  }
+  runEnhance();
+}
 
-        document.getElementById('charCount').innerText = cleanText.length;
-        document.getElementById('zwspCount').innerText = zwspNum;
-
-        const statusEl = document.getElementById('statusText');
-        if (zwspNum > 0) {
-            statusEl.innerText = '防護已啟動（可安心複製給 AI 閱讀）';
-            statusEl.style.color = '#15803d';
-        } else {
-            statusEl.innerText = '一般文字（尚未防護）';
-            statusEl.style.color = '#64748b';
-        }
-        updateXray();
-    }
-
-    function updateXray() {
-        const isChecked = document.getElementById('xrayToggle').checked;
-        const xrayBox = document.getElementById('xrayView');
-        if (!isChecked) {
-            xrayBox.style.display = 'none';
-            return;
-        }
-        xrayBox.style.display = 'block';
-        const escaped = textarea.value
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/\u200B/g, '<span class="xray-dot">·</span>');
-        xrayBox.innerHTML = '<b>【X 光透視預覽（紅點 · 代表透明盲人點字／隔板的位置）】：</b><br>' + (escaped || '（尚無內容）');
-    }
-
-    function copyText() {
-        if (!textarea.value) return showToast('沒有可複製的文字！');
-        navigator.clipboard.writeText(textarea.value).then(() => {
-            showToast('📋 已複製！可直接貼到 AI 聊天視窗或 Word 文件中。');
-        });
-    }
-
-    function downloadSelf() {
-        const cloneDoc = document.documentElement.cloneNode(true);
-        const ta = cloneDoc.querySelector('#textInput');
-        if (ta) ta.innerHTML = '';
-        const htmlContent = '<!DOCTYPE html>\n' + cloneDoc.outerHTML;
-        const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = '三生碑緣_中文AI隱形便利貼插入器_張明泰(長流)原創.html';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        showToast('📥 離線版工具已下載！點開檔案即可永久無網使用。');
-    }
-
-    function showToast(msg) {
-        const t = document.getElementById('toast');
-        t.innerText = msg;
-        t.style.opacity = 1;
-        setTimeout(() => { t.style.opacity = 0; }, 2800);
-    }
+function clearAll() {
+  document.getElementById('inputText').value = '';
+  document.getElementById('outputText').value = '';
+  document.getElementById('previewBox').textContent = '尚未轉換';
+  document.getElementById('statusMsg').textContent = '';
+}
 </script>
-
 </body>
 </html>
